@@ -205,7 +205,7 @@ width = 100
 walls = create_box(length, width)
 particles = generate_random_particles(10, 40, 40, (1, 3))
 
-simulation_time = 10
+simulation_time = 1
 time_step = 0.01
 min_collision_distance = 0.001
 
@@ -240,24 +240,7 @@ for _ in range(int(simulation_time / time_step)):
     
     total_kinetic_energy = 0
 
-    for particle in particles:
-        kinetic_energy = 0.5 * particle.mass * (particle.velocity[0]**2 + particle.velocity[1]**2)
-        total_kinetic_energy += kinetic_energy
-
-    average_kinetic_energy_per_particle = total_kinetic_energy / len(particles)
-
-# Calculate degrees of freedom for a 2D system
-    df = 2 * len(particles) - 2
-
-# Boltzmann constant (J/K)
-    kB = 1.380649e-23  # Value in Joules per Kelvin
-
-# Calculate the temperature using the formula
-    temperature = average_kinetic_energy_per_particle / (0.5 * kB * df)
-
-# Print or use the calculated temperature as needed
-    print("Average Kinetic Energy per Particle:", average_kinetic_energy_per_particle)
-    print("Temperature:", temperature)
+    
 
 
 
@@ -320,10 +303,7 @@ for iteration in range(int(simulation_time / time_step)):
     ax.set_aspect('equal')
 
     
-    plt.text(-0.38, 0.95, f'Number of Particles', transform=ax.transAxes, color='white')
-    plt.text(-0.38, 0.9, f'{nb}', transform=ax.transAxes, color='white')
-    plt.text(1.05, 0.95, f'Temperature:', transform=ax.transAxes, color='white')
-    plt.text(1.05, 0.9, f'{temperature:.2f} K', transform=ax.transAxes, color='white')
+    
 
 
     plt.pause(0.01)
